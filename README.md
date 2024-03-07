@@ -1,4 +1,4 @@
-# Desktop Organizer Script
+# File Organizer Script
 
 ## Overview
 This script organizes files within a specified folder into subfolders based on their file extensions. The script uses the 'os' and 'shut' modules. 
