@@ -1,7 +1,7 @@
 # Desktop Organizer Script
 
 ## Overview
-This script organizes files within a specified folder into subfolders based on their file extensions.
+This script organizes files within a specified folder into subfolders based on their file extensions. The script uses the 'os' and 'shut' modules. 
 
 ## Usage
 1. Clone or download the script file (`organize_files.py`) to your local machine.
@@ -15,3 +15,6 @@ This script organizes files within a specified folder into subfolders based on t
 ## Important Note
 Ensure that the target folder path specified in the script exists and is accessible. The script will not work if the folder path is invalid.
 
+## Links to Documentation
+- [Python official documentation: os — Miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html)
+- [Python official documentation: shutil — High-level file operations](https://docs.python.org/3/library/shutil.html)
