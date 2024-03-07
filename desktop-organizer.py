@@ -12,8 +12,8 @@ def create_subfolder(parent_folder_path, subfolder_name):
     Returns:
         str: Path of the created subfolder.
     """
+    subfolder_path = os.path.join(parent_folder_path, subfolder_name)
     try:
-        subfolder_path = os.path.join(parent_folder_path, subfolder_name)
         if not os.path.exists(subfolder_path):
             os.makedirs(subfolder_path)
         return subfolder_path
