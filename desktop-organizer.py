@@ -12,11 +12,15 @@ def create_subfolder(parent_folder_path, subfolder_name):
     Returns:
         str: Path of the created subfolder.
     """
-    subfolder_path = os.path.join(parent_folder_path, subfolder_name)
-    if not os.path.exists(subfolder_path):
-        os.makedirs(subfolder_path)
-    return subfolder_path
-
+    try:
+        subfolder_path = os.path.join(parent_folder_path, subfolder_name)
+        if not os.path.exists(subfolder_path):
+            os.makedirs(subfolder_path)
+        return subfolder_path
+    except OSError as e:
+        print(f"Error creating subfolder: {e}")
+        return None
+    
 
 def organize_files_by_extension(folder_path):
     """
@@ -42,8 +46,4 @@ if __name__ == "__main__":
         organize_files_by_extension(target_folder_path)
     else:
         print("Folder path is not valid. Please enter a valid folder path.")
-        
-
-
-
-        
+    
