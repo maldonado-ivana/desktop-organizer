@@ -1,31 +1,49 @@
 import os #library to interact with the operating system
-import shutil  #shutil library to move files
+import shutil  #module to move files
 
-def create_subfolder_if_doesnt_exist(folder_path, subfolder_name):
-    subfolder_path = os.path.join(folder_path, subfolder_name) # create the subfolder_path by joining the folder_path and subfolder_name
+def create_subfolder(parent_folder_path, subfolder_name):
+    """
+    Creates a subfolder within the specified parent folder if it doesn't already exist.
+    
+    Args:
+        parent_folder_path: Path of the parent folder.
+        subfolder_name: Name of the subfolder to be created.
+    
+    Returns:
+        str: Path of the created subfolder.
+    """
+    subfolder_path = os.path.join(parent_folder_path, subfolder_name)
     if not os.path.exists(subfolder_path):
         os.makedirs(subfolder_path)
     return subfolder_path
 
 
-def organize_folder(folder_path):
-    for filename in os.listdir(folder_path): # loop through the files in the folder
+def organize_files_by_extension(folder_path):
+    """
+    Organizes files within the specified folder into subfolders based on their file extensions.
+    
+    Args:
+        folder_path: Path of the folder to organize.
+    """
+    for filename in os.listdir(folder_path):
         if os.path.isfile(os.path.join(folder_path, filename)):
-            file_extension = filename.split('.')[-1].lower() # get the file extension and cast it to lower case
+            file_extension = filename.split('.')[-1].lower()
             if file_extension:
                 subfolder_name = f"{file_extension.upper()} Files"
-                subfolder_path = create_subfolder_if_doesnt_exist(folder_path, subfolder_name)
+                subfolder_path = create_subfolder(folder_path, subfolder_name)
                 file_path = os.path.join(folder_path, filename)
-                shutil.move(file_path, subfolder_path) #method from shiutil library to move files
+                shutil.move(file_path, subfolder_path)
                 print(f"Moved {filename} to {subfolder_path}")
 
 if __name__ == "__main__":
     print("Desktop Organizer Script")
-    # path to the folder to be cleaned
-    target_folder_path = 'PATH_TO_FOLDER_TO_BE_CLEANED'
-    # validate whether folder path is a real path, if so run the clean funtion, esle return error message. 
+    target_folder_path = 'PATH_TO_FOLDER_TO_BE_CLEANED' # Provide path to the folder to organize
     if os.path.isdir(target_folder_path):
-        organize_folder(target_folder_path)
+        organize_files_by_extension(target_folder_path)
     else:
         print("Folder path is not valid. Please enter a valid folder path.")
+        
+
+
+
         
